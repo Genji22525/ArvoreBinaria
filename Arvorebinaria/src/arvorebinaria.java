@@ -84,3 +84,42 @@ class ArvoreBinaria {
         }
     }
 }
+
+
+class ArvoreBinaria {
+    // Classe  que representa um nó na árvore
+    class Node {
+        int value;
+        Node left, right;
+
+        Node(int value) {
+            this.value = value;
+            left = right = null;
+        }
+    }
+
+    Node root; // variavel aleatoria para usar de referencia para os apontamentos
+
+    ArvoreBinaria() {
+        root = null;
+    }
+
+    void insert(int value) {
+        root = insertRec(root, value);
+    }
+
+    Node insertRec(Node root, int value) {
+        if (root == null) {
+            root = new Node(value);
+            return root;
+        }
+        if (value < root.value)
+            root.left = insertRec(root.left, value);
+        else if (value > root.value)
+            root.right = insertRec(root.right, value);
+        return root;
+    }
+
+    void remove(int value) {
+        root = removeRec(root, value);
+    }
